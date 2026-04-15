@@ -1,4 +1,5 @@
 /*! tailwindcss v4.2.2 | MIT License | https://tailwindcss.com */
+@layer properties;
 @layer theme, base, components, utilities;
 @layer theme {
   :root, :host {
@@ -6,6 +7,10 @@
       "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --tw-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
+    --tw-spacing: 0.25rem;
+    --tw-text-3xl: 1.875rem;
+    --tw-text-3xl--line-height: calc(2.25 / 1.875);
+    --tw-radius-2xl: 1rem;
     --tw-default-font-family: var(--tw-font-sans);
     --tw-default-mono-font-family: var(--tw-font-mono);
   }
@@ -158,4 +163,145 @@
     display: none !important;
   }
 }
-@layer utilities;
+@layer utilities {
+  .tw\:mx-auto {
+    margin-inline: auto;
+  }
+  .tw\:mt-3 {
+    margin-top: calc(var(--tw-spacing) * 3);
+  }
+  .tw\:block {
+    display: block;
+  }
+  .tw\:flex {
+    display: flex;
+  }
+  .tw\:h-0\.75 {
+    height: calc(var(--tw-spacing) * 0.75);
+  }
+  .tw\:w-20 {
+    width: calc(var(--tw-spacing) * 20);
+  }
+  .tw\:w-full {
+    width: 100%;
+  }
+  .tw\:max-w-275 {
+    max-width: calc(var(--tw-spacing) * 275);
+  }
+  .tw\:max-w-\[1100px\] {
+    max-width: 1100px;
+  }
+  .tw\:flex-col {
+    flex-direction: column;
+  }
+  .tw\:items-center {
+    align-items: center;
+  }
+  .tw\:justify-center {
+    justify-content: center;
+  }
+  .tw\:gap-3 {
+    gap: calc(var(--tw-spacing) * 3);
+  }
+  .tw\:rounded-2xl {
+    border-radius: var(--tw-radius-2xl);
+  }
+  .tw\:rounded-full {
+    border-radius: calc(infinity * 1px);
+  }
+  .tw\:bg-\[\#EDEDED\] {
+    background-color: #EDEDED;
+  }
+  .tw\:bg-linear-to-r {
+    --tw-gradient-position: to right;
+    @supports (background-image: linear-gradient(in lab, red, red)) {
+      --tw-gradient-position: to right in oklab;
+    }
+    background-image: linear-gradient(var(--tw-gradient-stops));
+  }
+  .tw\:from-\[\#00CFFF\] {
+    --tw-gradient-from: #00CFFF;
+    --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
+  }
+  .tw\:to-\[\#8A4DFF\] {
+    --tw-gradient-to: #8A4DFF;
+    --tw-gradient-stops: var(--tw-gradient-via-stops, var(--tw-gradient-position), var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position));
+  }
+  .tw\:px-8 {
+    padding-inline: calc(var(--tw-spacing) * 8);
+  }
+  .tw\:py-6 {
+    padding-block: calc(var(--tw-spacing) * 6);
+  }
+  .tw\:py-7 {
+    padding-block: calc(var(--tw-spacing) * 7);
+  }
+  .tw\:pt-10 {
+    padding-top: calc(var(--tw-spacing) * 10);
+  }
+  .tw\:text-3xl {
+    font-size: var(--tw-text-3xl);
+    line-height: var(--tw-leading, var(--tw-text-3xl--line-height));
+  }
+  .tw\:text-3xl\! {
+    font-size: var(--tw-text-3xl) !important;
+    line-height: var(--tw-leading, var(--tw-text-3xl--line-height)) !important;
+  }
+}
+@property --tw-gradient-position {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-gradient-from {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #0000;
+}
+@property --tw-gradient-via {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #0000;
+}
+@property --tw-gradient-to {
+  syntax: "<color>";
+  inherits: false;
+  initial-value: #0000;
+}
+@property --tw-gradient-stops {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-gradient-via-stops {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-gradient-from-position {
+  syntax: "<length-percentage>";
+  inherits: false;
+  initial-value: 0%;
+}
+@property --tw-gradient-via-position {
+  syntax: "<length-percentage>";
+  inherits: false;
+  initial-value: 50%;
+}
+@property --tw-gradient-to-position {
+  syntax: "<length-percentage>";
+  inherits: false;
+  initial-value: 100%;
+}
+@layer properties {
+  @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
+    *, ::before, ::after, ::backdrop {
+      --tw-gradient-position: initial;
+      --tw-gradient-from: #0000;
+      --tw-gradient-via: #0000;
+      --tw-gradient-to: #0000;
+      --tw-gradient-stops: initial;
+      --tw-gradient-via-stops: initial;
+      --tw-gradient-from-position: 0%;
+      --tw-gradient-via-position: 50%;
+      --tw-gradient-to-position: 100%;
+    }
+  }
+}
