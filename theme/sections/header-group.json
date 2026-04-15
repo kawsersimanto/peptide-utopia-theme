@@ -17,7 +17,7 @@
         "announcement_BxgCk9": {
           "type": "_announcement",
           "settings": {
-            "text": "<strong>Card Payments Now Available</strong> <strong>💳 </strong>Orders placed before 12 PM AEST dispatch the same day.",
+            "text": "<strong>Enjoy Free Express Shipping on Orders Over $200</strong>",
             "link": "",
             "font": "var(--font-subheading--family)",
             "font_size": "0.75rem",
@@ -30,6 +30,9 @@
       },
       "block_order": [
         "announcement_BxgCk9"
+      ],
+      "custom_css": [
+        ".announcement-bar__text {line-height: 1.4em;}"
       ],
       "name": "t:names.announcement_bar",
       "settings": {
@@ -77,6 +80,11 @@
           "blocks": {}
         }
       },
+      "custom_css": [
+        ".header-logo__image {transform: translateY(-5px);}",
+        ".header-menu {padding-top: 20px; padding-bottom: 8px;}",
+        ".menu-list__link:hover {text-decoration: underline;}"
+      ],
       "settings": {
         "logo_position": "center",
         "menu_position": "center",
