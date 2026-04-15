@@ -88,6 +88,14 @@
         "padding-block-end": 0
       }
     },
+    "page_banner_d4W6bQ": {
+      "type": "page-banner",
+      "name": "Page Banner",
+      "settings": {
+        "heading": "Page Title",
+        "description": "<p>Add a description for this page.</p>"
+      }
+    },
     "product_list_fa6P9H": {
       "type": "product-list",
       "blocks": {
@@ -285,6 +293,7 @@
   },
   "order": [
     "slideshow_BYrkiP",
+    "page_banner_d4W6bQ",
     "product_list_fa6P9H"
   ]
 }
