@@ -92,8 +92,12 @@
       "type": "page-banner",
       "name": "Page Banner",
       "settings": {
-        "heading": "Page Title",
-        "description": "<p>Add a description for this page.</p>"
+        "heading": "Best Peptide Company in Australia",
+        "description": "<p>At <strong>Peptide Paradise</strong>, we proudly provide top-quality peptides trusted by customers across Australia. Our mission is to deliver reliable products at competitive prices with outstanding service you can count on.</p>",
+        "padding_top": 40,
+        "padding_bottom": 40,
+        "padding_mobile_top": 40,
+        "padding_mobile_bottom": 40
       }
     },
     "product_list_fa6P9H": {
