@@ -8,6 +8,8 @@
     --tw-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
     --tw-spacing: 0.25rem;
+    --tw-text-2xl: 1.5rem;
+    --tw-text-2xl--line-height: calc(2 / 1.5);
     --tw-text-3xl: 1.875rem;
     --tw-text-3xl--line-height: calc(2.25 / 1.875);
     --tw-radius-2xl: 1rem;
@@ -238,6 +240,13 @@
   }
   .tw\:pt-10 {
     padding-top: calc(var(--tw-spacing) * 10);
+  }
+  .tw\:text-center {
+    text-align: center;
+  }
+  .tw\:text-2xl\! {
+    font-size: var(--tw-text-2xl) !important;
+    line-height: var(--tw-leading, var(--tw-text-2xl--line-height)) !important;
   }
   .tw\:text-3xl {
     font-size: var(--tw-text-3xl);
