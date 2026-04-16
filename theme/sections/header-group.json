@@ -11,6 +11,25 @@
   "type": "header",
   "name": "Header",
   "sections": {
+    "topbar_wkQMd3": {
+      "type": "topbar",
+      "name": "Topbar Announcement",
+      "settings": {
+        "show_topbar": true,
+        "primary_message": "Card Payments Now Available 💳",
+        "secondary_message": "Orders placed before 12 PM AEST dispatch the same day.",
+        "gradient_start": "#78f7f1",
+        "gradient_end": "#c490f8",
+        "gradient_angle": 90,
+        "text_color": "#1c2d67",
+        "primary_font_size": 16,
+        "primary_font_weight": "700",
+        "secondary_font_size": 12,
+        "secondary_font_weight": "400",
+        "padding_vertical": 12,
+        "padding_horizontal": 16
+      }
+    },
     "header_announcements_9jGBFp": {
       "type": "header-announcements",
       "blocks": {
@@ -123,6 +142,7 @@
     }
   },
   "order": [
+    "topbar_wkQMd3",
     "header_announcements_9jGBFp",
     "header_section"
   ]
