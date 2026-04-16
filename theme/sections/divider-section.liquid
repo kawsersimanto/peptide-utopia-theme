@@ -1,0 +1,154 @@
+<style>
+  .divider-section {
+    --padding-top: {{ section.settings.padding_top }}px;
+    --padding-bottom: {{ section.settings.padding_bottom }}px;
+    --padding-top-mobile: {{ section.settings.padding_top_mobile }}px;
+    --padding-bottom-mobile: {{ section.settings.padding_bottom_mobile }}px;
+
+    padding-top: calc(var(--padding-top-mobile) * 0.75);
+    padding-bottom: calc(var(--padding-bottom-mobile) * 0.75);
+  }
+
+  @media screen and (min-width: 750px) {
+    .divider-section {
+      padding-top: var(--padding-top);
+      padding-bottom: var(--padding-bottom);
+    }
+  }
+
+  .divider-section__rule {
+    color: {{ section.settings.text_color }};
+  }
+
+  .divider-section__rule::before,
+  .divider-section__rule::after {
+    content: '';
+    flex: 1;
+    border-bottom: 2px solid {{ section.settings.line_color }};
+    margin: 0 12px;
+  }
+
+  .divider-section__icon {
+    color: {{ section.settings.icon_color }};
+  }
+</style>
+
+<section class="divider-section">
+  <div class="color-background-1 gradient">
+    <div class="divider-section__inner">
+      <div class="divider-section__rule tw:flex tw:items-center tw:text-center tw:mx-auto tw:max-w-225 tw:font-extrabold tw:text-[clamp(18px,2vw,24px)]">
+        {% if section.settings.show_icon %}
+          <span class="divider-section__icon tw:mr-2 tw:text-[1.1em]">{{ section.settings.icon }}</span>
+        {% endif %}
+        <span class="tw:whitespace-nowrap">{{ section.settings.label }}</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Divider Banner",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Label Text",
+      "default": "BEST PEPTIDES FOR SALE"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_icon",
+      "label": "Show Icon",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "icon",
+      "label": "Icon (emoji or symbol)",
+      "default": "✔"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#121212"
+    },
+    {
+      "type": "color",
+      "id": "icon_color",
+      "label": "Icon Color",
+      "default": "#6d6d6d"
+    },
+    {
+      "type": "color",
+      "id": "line_color",
+      "label": "Line Color",
+      "default": "#e0e0e0"
+    },
+    {
+      "type": "header",
+      "content": "Spacing — Desktop"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Spacing — Mobile"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Padding Top (Mobile)",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Padding Bottom (Mobile)",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 0
+    }
+  ],
+  "presets": [
+    {
+      "name": "Divider Banner"
+    }
+  ]
+}
+{% endschema %}

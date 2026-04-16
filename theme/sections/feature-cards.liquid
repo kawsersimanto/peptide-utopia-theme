@@ -1,0 +1,286 @@
+<style>
+  .feature-cards-section {
+    --padding-top: {{ section.settings.padding_top }}px;
+    --padding-bottom: {{ section.settings.padding_bottom }}px;
+    --padding-top-mobile: {{ section.settings.padding_top_mobile }}px;
+    --padding-bottom-mobile: {{ section.settings.padding_bottom_mobile }}px;
+
+    --accent: {{ section.settings.accent_color }};
+    --tint: {{ section.settings.card_bg_color }};
+    --line: {{ section.settings.border_color }};
+    --ink: {{ section.settings.title_color }};
+    --ink-soft: {{ section.settings.text_color }};
+    --shadow: 0 8px 22px rgba(0, 0, 0, 0.06);
+
+    padding-top: calc(var(--padding-top-mobile) * 0.75);
+    padding-bottom: calc(var(--padding-bottom-mobile) * 0.75);
+  }
+
+  @media screen and (min-width: 750px) {
+    .feature-cards-section {
+      padding-top: var(--padding-top);
+      padding-bottom: var(--padding-bottom);
+    }
+  }
+
+  .feature-cards__grid {
+    max-width: 1200px;
+    margin: 22px auto;
+    padding: 0 14px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+
+  .feature-cards__item {
+    background: var(--tint);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: clamp(16px, 2.4vw, 22px);
+    box-shadow: var(--shadow);
+    text-align: center;
+    position: relative;
+  }
+
+  .feature-cards__item:not(:first-child)::before {
+    content: "";
+    position: absolute;
+    left: -8px;
+    top: 12%;
+    bottom: 12%;
+    width: 1px;
+    background: var(--line);
+    display: block;
+  }
+
+  .feature-cards__icon {
+    width: 44px;
+    height: 44px;
+    margin: 2px auto 10px;
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 0 0 0 6px rgba(123, 71, 246, 0.08);
+    display: grid;
+    place-items: center;
+  }
+
+  .feature-cards__icon img {
+    width: 26px;
+    height: 26px;
+    object-fit: contain;
+  }
+
+  .feature-cards__title {
+    margin: 6px 0;
+    font-weight: 800;
+    color: var(--ink);
+    font-size: clamp(16px, 2.1vw, 20px);
+    letter-spacing: 0.2px;
+  }
+
+  .feature-cards__text {
+    margin: 0;
+    color: var(--ink-soft);
+    font-size: clamp(13px, 1.6vw, 15px);
+    line-height: 1.6;
+  }
+
+  @media (max-width: 1024px) {
+    .feature-cards__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .feature-cards__item:not(:first-child)::before {
+      display: none;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .feature-cards__grid {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+  }
+</style>
+
+<section class="feature-cards-section">
+  <div class="color-background-1 gradient">
+    <div
+      class="feature-cards__grid"
+      role="list"
+      aria-label="{{ section.settings.aria_label }}"
+    >
+      {% for block in section.blocks %}
+        <div class="feature-cards__item" role="listitem" {{ block.shopify_attributes }}>
+          <div class="feature-cards__icon" aria-hidden="true">
+            {% if block.settings.icon_image %}
+              {{
+                block.settings.icon_image
+                | image_url: width: 52
+                | image_tag: width: 26, height: 26, alt: block.settings.title, loading: 'lazy'
+              }}
+            {% endif %}
+          </div>
+          <h3 class="feature-cards__title">{{ block.settings.title }}</h3>
+          <p class="feature-cards__text">{{ block.settings.text }}</p>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Feature Cards",
+  "tag": "section",
+  "class": "section",
+  "max_blocks": 6,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Accessibility"
+    },
+    {
+      "type": "text",
+      "id": "aria_label",
+      "label": "Grid ARIA Label",
+      "default": "Store advantages"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Accent Color",
+      "default": "#7B47F6"
+    },
+    {
+      "type": "color",
+      "id": "card_bg_color",
+      "label": "Card Background",
+      "default": "#f3effe"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border Color",
+      "default": "#e7e2fb"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title Color",
+      "default": "#121212"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Body Text Color",
+      "default": "#2c2c2c"
+    },
+    {
+      "type": "header",
+      "content": "Spacing — Desktop"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 52
+    },
+    {
+      "type": "header",
+      "content": "Spacing — Mobile"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Padding Top (Mobile)",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Padding Bottom (Mobile)",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 52
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature_card",
+      "name": "Feature Card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon_image",
+          "label": "Icon Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Feature Title"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Description",
+          "default": "Describe this feature in a short sentence."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Feature Cards",
+      "blocks": [
+        {
+          "type": "feature_card",
+          "settings": {
+            "title": "Australia Wide Shipping",
+            "text": "All Orders Shipped Within 48 Hours from Our NSW Warehouse."
+          }
+        },
+        {
+          "type": "feature_card",
+          "settings": {
+            "title": "High-Quality Peptides",
+            "text": "Manufactured in GMP-compliant facilities with ≥99% purity."
+          }
+        },
+        {
+          "type": "feature_card",
+          "settings": {
+            "title": "100% Secure Checkout",
+            "text": "All orders packed and sent via AusPost Express."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
