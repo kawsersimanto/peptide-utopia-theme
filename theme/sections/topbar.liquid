@@ -1,0 +1,139 @@
+<style>
+  .topbar-header {
+    background: linear-gradient(
+      {{ section.settings.gradient_angle }}deg,
+      {{ section.settings.gradient_start }},
+      {{ section.settings.gradient_end }}
+    );
+    padding: {{ section.settings.padding_vertical }}px {{ section.settings.padding_horizontal }}px;
+    text-align: center;
+  }
+
+  .topbar-header p {
+    margin: 0;
+    color: {{ section.settings.text_color }};
+    font-size: {{ section.settings.font_size }}px;
+  }
+</style>
+
+{% if section.settings.show_topbar %}
+  <div class="tw:flex tw:flex-col tw:gap-1 topbar-header">
+    {% if section.settings.primary_message != blank %}
+      <p>{{ section.settings.primary_message }}</p>
+    {% endif %}
+    {% if section.settings.secondary_message != blank %}
+      <p>{{ section.settings.secondary_message }}</p>
+    {% endif %}
+  </div>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Topbar",
+  "enabled_on": {
+    "groups": ["header"]
+  },
+  "tag": "section",
+  "class": "topbar-section",
+  "limit": 1,
+  "settings": [
+    {
+      "type": "header",
+      "content": "Visibility"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_topbar",
+      "label": "Show topbar",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Messages"
+    },
+    {
+      "type": "text",
+      "id": "primary_message",
+      "label": "Primary message",
+      "default": "Card Payments Now Available 💳"
+    },
+    {
+      "type": "text",
+      "id": "secondary_message",
+      "label": "Secondary message",
+      "default": "Orders placed before 12 PM AEST dispatch the same day."
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "gradient_start",
+      "label": "Gradient start color",
+      "default": "#78f7f1"
+    },
+    {
+      "type": "color",
+      "id": "gradient_end",
+      "label": "Gradient end color",
+      "default": "#c490f8"
+    },
+    {
+      "type": "range",
+      "id": "gradient_angle",
+      "label": "Gradient angle",
+      "min": 0,
+      "max": 360,
+      "step": 1,
+      "unit": "deg",
+      "default": 90
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "Spacing & Typography"
+    },
+    {
+      "type": "range",
+      "id": "font_size",
+      "label": "Font size",
+      "min": 10,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "padding_vertical",
+      "label": "Vertical padding",
+      "min": 4,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "padding_horizontal",
+      "label": "Horizontal padding",
+      "min": 8,
+      "max": 64,
+      "step": 4,
+      "unit": "px",
+      "default": 16
+    }
+  ],
+  "presets": [
+    {
+      "name": "Topbar"
+    }
+  ]
+}
+{% endschema %}

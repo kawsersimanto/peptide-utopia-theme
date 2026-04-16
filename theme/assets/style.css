@@ -221,6 +221,9 @@
   .tw\:justify-center {
     justify-content: center;
   }
+  .tw\:gap-1 {
+    gap: calc(var(--tw-spacing) * 1);
+  }
   .tw\:gap-3 {
     gap: calc(var(--tw-spacing) * 3);
   }
