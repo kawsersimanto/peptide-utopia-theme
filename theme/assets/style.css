@@ -188,6 +188,9 @@
   .tw\:flex {
     display: flex;
   }
+  .tw\:grid {
+    display: grid;
+  }
   .tw\:h-0\.75 {
     height: calc(var(--tw-spacing) * 0.75);
   }
@@ -205,6 +208,9 @@
   }
   .tw\:max-w-\[900px\] {
     max-width: 900px;
+  }
+  .tw\:grid-cols-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
   }
   .tw\:flex-col {
     flex-direction: column;

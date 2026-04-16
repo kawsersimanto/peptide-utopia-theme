@@ -1,0 +1,130 @@
+<div
+  class="section section--page-width"
+  {{ section.shopify_attributes }}
+>
+  <div class="hidden--mobile">
+    <div class="tw:grid tw:grid-cols-4" style="--columns: {{ section.settings.columns }};">
+      {% for collection in section.settings.collections %}
+        <a href="{{ collection.url }}" class="collection-section-card">
+          <div class="collection-section-image-wrapper">
+            {% if collection.image %}
+              <img
+                src="{{ collection.image | image_url: width: 600 }}"
+                alt="{{ collection.image.alt | default: collection.title | escape }}"
+                width="600"
+                height="600"
+                loading="lazy"
+              >
+            {% elsif collection.products.first.featured_image %}
+              <img
+                src="{{ collection.products.first.featured_image | image_url: width: 600 }}"
+                alt="{{ collection.title | escape }}"
+                width="600"
+                height="600"
+                loading="lazy"
+              >
+            {% else %}
+              <div class="collection-section-placeholder">
+                {{ collection.title | slice: 0 }}
+              </div>
+            {% endif %}
+          </div>
+          <div class="collection-section-info">
+            <h3 class="collection-section-title">{{ collection.title }}</h3>
+            {% if collection.description != blank %}
+              <p class="collection-section-description">{{ collection.description | strip_html | truncate: 80 }}</p>
+            {% endif %}
+            <span class="collection-section-count">{{ collection.products_count }} products</span>
+          </div>
+        </a>
+      {% else %}
+        <p class="collection-section-empty">No collections selected.</p>
+      {% endfor %}
+    </div>
+  </div>
+  <div class="hidden--desktop">
+    {%- capture slides -%}
+    {%- for collection in section.settings.collections -%}
+      <slideshow-slide>
+        <a href="{{ collection.url }}" class="collection-section-card">
+          <div class="collection-section-image-wrapper">
+            {%- if collection.image -%}
+              <img
+                src="{{ collection.image | image_url: width: 600 }}"
+                alt="{{ collection.image.alt | default: collection.title | escape }}"
+                width="600"
+                height="600"
+                loading="lazy"
+              >
+            {%- elsif collection.products.first.featured_image -%}
+              <img
+                src="{{ collection.products.first.featured_image | image_url: width: 600 }}"
+                alt="{{ collection.title | escape }}"
+                width="600"
+                height="600"
+                loading="lazy"
+              >
+            {%- else -%}
+              <div class="collection-section-placeholder">
+                {{ collection.title | slice: 0 }}
+              </div>
+            {%- endif -%}
+          </div>
+          <div class="collection-section-info">
+            <h3 class="collection-section-title">{{ collection.title }}</h3>
+            {%- if collection.description != blank -%}
+              <p class="collection-section-description">
+                {{ collection.description | strip_html | truncate: 80 }}
+              </p>
+            {%- endif -%}
+            <span class="collection-section-count">{{ collection.products_count }} products</span>
+          </div>
+        </a>
+      </slideshow-slide>
+    {%- endfor -%}
+  {%- endcapture -%}
+
+    {% render 'slideshow',
+      slides: slides,
+      slide_count: section.settings.collections.size,
+      show_arrows: true,
+      icon_style: 'arrow',
+      icon_shape: 'circle',
+      arrows_position: 'bottom',
+      infinite: true,
+      autoplay: false
+    %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Collection List",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "collection_list",
+      "id": "collections",
+      "label": "Collections",
+      "limit": 12
+    },
+    {
+      "type": "range",
+      "id": "columns",
+      "label": "Columns",
+      "min": 2,
+      "max": 5,
+      "step": 1,
+      "default": 3
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collection List",
+      "settings": {
+        "columns": 3
+      }
+    }
+  ]
+}
+{% endschema %}

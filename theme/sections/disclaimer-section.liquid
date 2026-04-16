@@ -1,0 +1,188 @@
+{% comment %}
+  Section: Disclaimer
+  File: sections/disclaimer-section.liquid
+  Add to your theme via: Online Store > Themes > Edit code > Sections
+{% endcomment %}
+
+<style>
+  .disclaimer-section {
+    padding-top: calc({{ section.settings.padding_top }}px * 0.75);
+    padding-bottom: calc({{ section.settings.padding_bottom }}px * 0.75);
+  }
+  @media screen and (min-width: 750px) {
+    .disclaimer-section {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+  .disclaimer-wrap {
+    max-width: {{ section.settings.max_width }}px;
+    margin: 0 auto;
+    background: {{ section.settings.background_color }};
+    border: 1px solid {{ section.settings.border_color }};
+    border-radius: 14px;
+    padding: clamp(14px, 2.2vw, 20px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+  }
+  .disclaimer-container {
+    margin: 0 auto;
+    padding: 0 16px;
+  }
+  .disclaimer-head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 6px;
+  }
+  .disclaimer-icon {
+    width: 18px;
+    height: 18px;
+    fill: {{ section.settings.title_color }};
+    opacity: 0.9;
+    flex: 0 0 18px;
+  }
+  .disclaimer-title {
+    font-weight: 800;
+    letter-spacing: 0.2px;
+    text-transform: uppercase;
+    color: {{ section.settings.title_color }};
+    font-size: clamp(15px, 2vw, 17px);
+  }
+  .disclaimer-text {
+    margin: 0;
+    line-height: 1.65;
+    font-size: clamp(12px, 1.6vw, 14px);
+    color: {{ section.settings.text_color }};
+    opacity: 0.95;
+  }
+  @media (max-width: 420px) {
+    .disclaimer-wrap { border-radius: 12px; }
+  }
+</style>
+
+<div class="color-{{ section.settings.color_scheme }} gradient">
+  <div class="disclaimer-section">
+    <div class="disclaimer-container" role="contentinfo" aria-label="Site disclaimer">
+      <div class="disclaimer-wrap">
+        <div class="disclaimer-head">
+          {% if section.settings.show_icon %}
+            <svg class="disclaimer-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 2l9 4v6c0 5-3.8 9.7-9 10-5.2-.3-9-5-9-10V6l9-4zM11 9h2v7h-2V9zm0-3h2v2h-2V6z"></path>
+            </svg>
+          {% endif %}
+          <span class="disclaimer-title">{{ section.settings.title }}</span>
+        </div>
+        <p class="disclaimer-text">{{ section.settings.disclaimer_text }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Disclaimer",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Disclaimer"
+    },
+    {
+      "type": "textarea",
+      "id": "disclaimer_text",
+      "label": "Disclaimer text",
+      "default": "All peptide compounds offered are of premium quality and intended solely for research purposes. None of the statements made on this site or blog have been reviewed by the FDA or any international regulatory body. These products are not designed to diagnose, treat, cure, or prevent any disease or condition. They are strictly for research use only."
+    },
+    {
+      "type": "checkbox",
+      "id": "show_icon",
+      "label": "Show shield icon",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "options": [
+        { "value": "background-1", "label": "Background 1" },
+        { "value": "background-2", "label": "Background 2" },
+        { "value": "inverse", "label": "Inverse" },
+        { "value": "accent-1", "label": "Accent 1" },
+        { "value": "accent-2", "label": "Accent 2" }
+      ],
+      "default": "background-1"
+    },
+    {
+      "type": "range",
+      "id": "max_width",
+      "label": "Max width (px)",
+      "min": 600,
+      "max": 1400,
+      "step": 50,
+      "default": 1100
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding top (px)",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding bottom (px)",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "default": 52
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Box background",
+      "default": "#f6f6f6"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Box border",
+      "default": "#e5e5e5"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title & icon color",
+      "default": "#222222"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#2c2c2c"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Disclaimer"
+    }
+  ]
+}
+{% endschema %}
