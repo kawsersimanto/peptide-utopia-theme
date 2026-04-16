@@ -212,6 +212,9 @@
   .tw\:grid-cols-4 {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
+  .tw\:grid-cols-5 {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
   .tw\:flex-col {
     flex-direction: column;
   }
@@ -278,6 +281,10 @@
   .tw\:text-lg {
     font-size: var(--tw-text-lg);
     line-height: var(--tw-leading, var(--tw-text-lg--line-height));
+  }
+  .tw\:text-lg\! {
+    font-size: var(--tw-text-lg) !important;
+    line-height: var(--tw-leading, var(--tw-text-lg--line-height)) !important;
   }
   .tw\:text-xl {
     font-size: var(--tw-text-xl);

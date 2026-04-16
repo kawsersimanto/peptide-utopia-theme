@@ -1,10 +1,17 @@
+<style>
+  .collection-section-title {
+    font-weight: 700;
+    font-size: 0.875rem;
+  }
+</style>
+
 <div
   class="section section--page-width"
   {{ section.shopify_attributes }}
 >
   <div class="hidden--mobile">
-    <div class="tw:grid tw:grid-cols-4" style="--columns: {{ section.settings.columns }};">
-      {% for collection in section.settings.collections %}
+    <div class="tw:grid tw:grid-cols-5" style="--columns: {{ section.settings.columns }};">
+      {% for collection in section.settings.collections limit: 5 %}
         <a href="{{ collection.url }}" class="collection-section-card">
           <div class="collection-section-image-wrapper">
             {% if collection.image %}
@@ -30,11 +37,22 @@
             {% endif %}
           </div>
           <div class="collection-section-info">
-            <h3 class="collection-section-title">{{ collection.title }}</h3>
+            <h3 class="collection-section-title tw:flex tw:items-center tw:gap-1 tw:text-lg!">
+              {{ collection.title }}
+              <svg
+                width="14"
+                height="10"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                class="icon icon-arrow"
+                viewBox="0 0 14 10"
+              >
+                <path fill="currentColor" fill-rule="evenodd" d="M8.537.808a.5.5 0 0 1 .817-.162l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 1 1-.708-.708L11.793 5.5H1a.5.5 0 0 1 0-1h10.793L8.646 1.354a.5.5 0 0 1-.109-.546" clip-rule="evenodd"></path>
+              </svg>
+            </h3>
             {% if collection.description != blank %}
               <p class="collection-section-description">{{ collection.description | strip_html | truncate: 80 }}</p>
             {% endif %}
-            <span class="collection-section-count">{{ collection.products_count }} products</span>
           </div>
         </a>
       {% else %}
@@ -67,17 +85,17 @@
             {%- else -%}
               <div class="collection-section-placeholder">
                 {{ collection.title | slice: 0 }}
+                
               </div>
             {%- endif -%}
           </div>
           <div class="collection-section-info">
-            <h3 class="collection-section-title">{{ collection.title }}</h3>
+            <h3 class="collection-section-title tw:flex tw:items-center tw:gap-1 tw:text-lg!">{{ collection.title }} <svg width="14" height="10" xmlns="http://www.w3.org/2000/svg" fill="none" class="icon icon-arrow" viewBox="0 0 14 10"><path fill="currentColor" fill-rule="evenodd" d="M8.537.808a.5.5 0 0 1 .817-.162l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 1 1-.708-.708L11.793 5.5H1a.5.5 0 0 1 0-1h10.793L8.646 1.354a.5.5 0 0 1-.109-.546" clip-rule="evenodd"></path></svg></h3>
             {%- if collection.description != blank -%}
               <p class="collection-section-description">
                 {{ collection.description | strip_html | truncate: 80 }}
               </p>
             {%- endif -%}
-            <span class="collection-section-count">{{ collection.products_count }} products</span>
           </div>
         </a>
       </slideshow-slide>
