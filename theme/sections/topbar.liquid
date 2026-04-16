@@ -1,5 +1,10 @@
 <style>
   .topbar-header {
+    --topbar-text-size: {{ section.settings.primary_font_size }}px;
+    --topbar-text-weight: {{ section.settings.primary_font_weight }};
+    --topbar-desc-size: {{ section.settings.secondary_font_size }}px;
+    --topbar-desc-weight: {{ section.settings.secondary_font_weight }};
+
     background: linear-gradient(
       {{ section.settings.gradient_angle }}deg,
       {{ section.settings.gradient_start }},
@@ -9,20 +14,30 @@
     text-align: center;
   }
 
-  .topbar-header p {
+  .topbar-header-text {
     margin: 0;
     color: {{ section.settings.text_color }};
-    font-size: {{ section.settings.font_size }}px;
+    font-size: var(--topbar-text-size);
+    font-weight: var(--topbar-text-weight);
+    line-height: 1.2em;
+  }
+
+  .topbar-header-description {
+    margin: 0;
+    color: {{ section.settings.text_color }};
+    font-size: var(--topbar-desc-size);
+    font-weight: var(--topbar-desc-weight);
+    line-height: 1.2em;
   }
 </style>
 
 {% if section.settings.show_topbar %}
-  <div class="tw:flex tw:flex-col tw:gap-1 topbar-header">
+  <div class="tw:flex tw:flex-col tw:gap-1.5 topbar-header">
     {% if section.settings.primary_message != blank %}
-      <p>{{ section.settings.primary_message }}</p>
+      <p class="topbar-header-text">{{ section.settings.primary_message }}</p>
     {% endif %}
     {% if section.settings.secondary_message != blank %}
-      <p>{{ section.settings.secondary_message }}</p>
+      <p class="topbar-header-description">{{ section.settings.secondary_message }}</p>
     {% endif %}
   </div>
 {% endif %}
@@ -85,7 +100,7 @@
       "label": "Gradient angle",
       "min": 0,
       "max": 360,
-      "step": 1,
+      "step": 5,
       "unit": "deg",
       "default": 90
     },
@@ -97,17 +112,58 @@
     },
     {
       "type": "header",
-      "content": "Spacing & Typography"
+      "content": "Typography - Primary"
     },
     {
       "type": "range",
-      "id": "font_size",
-      "label": "Font size",
+      "id": "primary_font_size",
+      "label": "Primary font size",
+      "min": 10,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "select",
+      "id": "primary_font_weight",
+      "label": "Primary font weight",
+      "options": [
+        { "value": "400", "label": "Regular" },
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semi Bold" },
+        { "value": "700", "label": "Bold" }
+      ],
+      "default": "600"
+    },
+    {
+      "type": "header",
+      "content": "Typography - Secondary"
+    },
+    {
+      "type": "range",
+      "id": "secondary_font_size",
+      "label": "Secondary font size",
       "min": 10,
       "max": 24,
       "step": 1,
       "unit": "px",
       "default": 14
+    },
+    {
+      "type": "select",
+      "id": "secondary_font_weight",
+      "label": "Secondary font weight",
+      "options": [
+        { "value": "400", "label": "Regular" },
+        { "value": "500", "label": "Medium" },
+        { "value": "600", "label": "Semi Bold" }
+      ],
+      "default": "400"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
     },
     {
       "type": "range",

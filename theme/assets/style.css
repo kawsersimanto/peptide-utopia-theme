@@ -224,6 +224,9 @@
   .tw\:gap-1 {
     gap: calc(var(--tw-spacing) * 1);
   }
+  .tw\:gap-1\.5 {
+    gap: calc(var(--tw-spacing) * 1.5);
+  }
   .tw\:gap-3 {
     gap: calc(var(--tw-spacing) * 3);
   }
