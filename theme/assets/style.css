@@ -8,6 +8,12 @@
     --tw-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
     --tw-spacing: 0.25rem;
+    --tw-text-base: 1rem;
+    --tw-text-base--line-height: calc(1.5 / 1);
+    --tw-text-lg: 1.125rem;
+    --tw-text-lg--line-height: calc(1.75 / 1.125);
+    --tw-text-xl: 1.25rem;
+    --tw-text-xl--line-height: calc(1.75 / 1.25);
     --tw-text-2xl: 1.5rem;
     --tw-text-2xl--line-height: calc(2 / 1.5);
     --tw-text-3xl: 1.875rem;
@@ -190,9 +196,6 @@
   .tw\:max-w-275 {
     max-width: calc(var(--tw-spacing) * 275);
   }
-  .tw\:max-w-\[1100px\] {
-    max-width: 1100px;
-  }
   .tw\:flex-col {
     flex-direction: column;
   }
@@ -232,14 +235,8 @@
   .tw\:px-8 {
     padding-inline: calc(var(--tw-spacing) * 8);
   }
-  .tw\:py-6 {
-    padding-block: calc(var(--tw-spacing) * 6);
-  }
   .tw\:py-7 {
     padding-block: calc(var(--tw-spacing) * 7);
-  }
-  .tw\:pt-10 {
-    padding-top: calc(var(--tw-spacing) * 10);
   }
   .tw\:text-center {
     text-align: center;
@@ -248,13 +245,37 @@
     font-size: var(--tw-text-2xl) !important;
     line-height: var(--tw-leading, var(--tw-text-2xl--line-height)) !important;
   }
-  .tw\:text-3xl {
-    font-size: var(--tw-text-3xl);
-    line-height: var(--tw-leading, var(--tw-text-3xl--line-height));
-  }
   .tw\:text-3xl\! {
     font-size: var(--tw-text-3xl) !important;
     line-height: var(--tw-leading, var(--tw-text-3xl--line-height)) !important;
+  }
+  .tw\:text-base {
+    font-size: var(--tw-text-base);
+    line-height: var(--tw-leading, var(--tw-text-base--line-height));
+  }
+  .tw\:text-lg {
+    font-size: var(--tw-text-lg);
+    line-height: var(--tw-leading, var(--tw-text-lg--line-height));
+  }
+  .tw\:text-xl {
+    font-size: var(--tw-text-xl);
+    line-height: var(--tw-leading, var(--tw-text-xl--line-height));
+  }
+  .tw\:text-xl\! {
+    font-size: var(--tw-text-xl) !important;
+    line-height: var(--tw-leading, var(--tw-text-xl--line-height)) !important;
+  }
+  .tw\:md\:text-2xl\! {
+    @media (width >= 48rem) {
+      font-size: var(--tw-text-2xl) !important;
+      line-height: var(--tw-leading, var(--tw-text-2xl--line-height)) !important;
+    }
+  }
+  .tw\:md\:text-3xl\! {
+    @media (width >= 48rem) {
+      font-size: var(--tw-text-3xl) !important;
+      line-height: var(--tw-leading, var(--tw-text-3xl--line-height)) !important;
+    }
   }
 }
 @property --tw-gradient-position {
