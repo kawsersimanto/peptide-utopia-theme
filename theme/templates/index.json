@@ -377,6 +377,10 @@
           "glp-1-peptides",
           "bac-water"
         ],
+        "padding_top": 0,
+        "padding_bottom": 40,
+        "padding_top_mobile": 24,
+        "padding_bottom_mobile": 24,
         "columns": 5
       }
     },
@@ -442,7 +446,7 @@
         "overlay_color": "#00000026",
         "overlay_style": "solid",
         "gradient_direction": "to top",
-        "padding-block-start": 0,
+        "padding-block-start": 40,
         "padding-block-end": 0
       }
     }
