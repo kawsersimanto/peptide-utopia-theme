@@ -10,6 +10,7 @@
 {
   "current": {
     "logo": "shopify://shop_images/Peptide_Paradise_trans.avif",
+    "logo_inverse": "shopify://shop_images/favicon.webp",
     "logo_height": 44,
     "logo_height_mobile": 44,
     "type_body_font": "inter_n4",
@@ -43,9 +44,9 @@
     "type_size_h6": "12",
     "type_line_height_h6": "display-loose",
     "page_width": "narrow",
-    "page_transition_enabled": false,
-    "transition_to_main_product": false,
-    "card_hover_effect": "none",
+    "page_transition_enabled": true,
+    "transition_to_main_product": true,
+    "card_hover_effect": "subtle-zoom",
     "badge_position": "top-right",
     "badge_corner_radius": 100,
     "badge_sale_color_scheme": "scheme-3",
@@ -57,20 +58,24 @@
     "button_border_radius_secondary": 14,
     "cart_type": "drawer",
     "cart_price_font": "secondary",
-    "show_cart_note": false,
+    "auto_open_cart_drawer": true,
+    "show_cart_note": true,
     "show_add_discount_code": true,
+    "drawer_color_scheme": "scheme-b94edd6f-1625-49c0-992b-bd0d2b493f2e",
     "drawer_drop_shadow": true,
-    "icon_stroke": "default",
+    "icon_stroke": "thin",
     "input_border_width": 1,
     "inputs_border_radius": 4,
+    "popover_color_scheme": "scheme-b94edd6f-1625-49c0-992b-bd0d2b493f2e",
     "popover_border_radius": 14,
     "popover_border": "none",
     "currency_code_enabled_product_pages": false,
     "currency_code_enabled_product_cards": false,
     "currency_code_enabled_cart_items": false,
+    "quick_add_color_scheme": "scheme-b94edd6f-1625-49c0-992b-bd0d2b493f2e",
     "product_corner_radius": 0,
     "card_corner_radius": 4,
-    "show_variant_image": false,
+    "show_variant_image": true,
     "variant_swatch_width": 34,
     "variant_swatch_height": 34,
     "variant_swatch_radius": 32,
@@ -81,6 +86,11 @@
     "blocks": {
       "14060646107696862457": {
         "type": "shopify://apps/judge-me-reviews/blocks/judgeme_core/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+        "disabled": false,
+        "settings": {}
+      },
+      "4143866229958350875": {
+        "type": "shopify://apps/upsell-koala-bundles/blocks/deals-embed/2b951f75-113f-4fca-bdf3-c92703235716",
         "disabled": false,
         "settings": {}
       }

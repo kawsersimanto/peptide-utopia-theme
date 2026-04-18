@@ -58,7 +58,7 @@
         "speed": 5,
         "section_width": "page-width",
         "color_scheme": "scheme-1",
-        "divider_width": 1,
+        "divider_width": 0,
         "padding-block-start": 15,
         "padding-block-end": 15
       }
@@ -129,8 +129,8 @@
         "actions_font_size": "0.875rem",
         "actions_font": "body",
         "actions_text_case": "none",
-        "color_scheme_top": "scheme-1",
-        "color_scheme_bottom": "",
+        "color_scheme_top": "scheme-b94edd6f-1625-49c0-992b-bd0d2b493f2e",
+        "color_scheme_bottom": "scheme-b94edd6f-1625-49c0-992b-bd0d2b493f2e",
         "color_scheme_transparent": "scheme-6",
         "enable_transparent_header_home": false,
         "home_color_scheme": "inverse",
